@@ -1,6 +1,6 @@
 # Reproducible Research: Peer Assessment 1
 
-
+## STEP:1  
 ## Loading and preprocessing the data  
   
 The first step is to read the CSV file, reading the data and storing it in the variable named "activity".  
@@ -50,11 +50,14 @@ Converting the date column from factor in to date format and saving it back in t
 ```r
 activity$date <- as.Date(activity$date, format = "%Y-%m-%d") 
 ```
-
-
+  
+##STEP:2  
 ## What is mean total number of steps taken per day?  
 
-Creating a data frame "dat" with the columns containing the Date as its first column and the total number of steps taken in a day. And then plotting the histogram for total number of steps taken per day. The blue vertical line indicates the median and white vertical line indicates the mean. 
+Creating a data frame "dat" with the columns containing the Date as its first column and the total number of steps taken in a day. And then plotting the histogram for total number of steps taken per day. The blue vertical line indicates the median and white vertical line indicates the mean.  
+  
+#Histogram:1  
+
 
 ```r
 Totalsteps_taken <- rep(NA, length(unique(activity$date)))
@@ -97,6 +100,9 @@ median(dat$Totalsteps_taken)
 ```
   
 Creating the historgram for total number steps taken per day by using the aggregate function.  
+  
+#Histogram:2  
+
 
 ```r
 TotalSteps <- aggregate(steps ~ date, data = activity, sum, na.rm = TRUE)
@@ -126,7 +132,7 @@ median(TotalSteps$steps)
 ## [1] 10765
 ```
 
- 
+##STEP:3 
 ## What is the average daily activity pattern?  
 
 1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)  
@@ -163,7 +169,7 @@ names(interval_max)
 ## [1] "835"
 ```
 
-
+##STEP:4  
 ## Imputing missing values  
 Note that there are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce bias into some calculations or summaries of the data.
 
@@ -256,6 +262,7 @@ median(Totalsteps_taken2$steps)
   
 This histogram looks similar to the second histogram created during the second step. The mean and median values are almost equal.I think this is because, the zero values in the data frame are neglected while creating the histogram.  
   
+##STEP:5  
 ## Are there differences in activity patterns between weekdays and weekends?  
 
 For this part the weekdays() function may be of some help here. Use the dataset with the filled-in missing values for this part.    
